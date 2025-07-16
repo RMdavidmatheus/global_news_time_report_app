@@ -1,12 +1,18 @@
-import { Button} from "@heroui/react"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import Login from './pages/login';
+import Register from './pages/register';
 
 function App() {
 
   return (
-      <div>
-        <h1 className='text-6xl font-bold'>Hello World</h1>
-        <Button variant="ghost" color="primary">Click me</Button>
-      </div>
+    <Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  </Router>
   )
 }
 
