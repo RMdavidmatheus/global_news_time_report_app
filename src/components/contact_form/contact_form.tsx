@@ -127,7 +127,6 @@ export default function ContactFormComponent() {
           errorMessage="Por favor, ingresa el mensaje de la solicitud"
           name="message"
           placeholder="Ingresa el mensaje"
-          description="Aquí puedes describir tu solicitud, sugerencias, dudas, etc."
         />
       </div>
 
