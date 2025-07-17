@@ -13,12 +13,12 @@ function App() {
       {/*Navbar Layout */}
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/activities" element={<Activities />} />
       </Route>
 
       {/*No Navbar Layout */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/activities" element={<Activities />} />
     </Routes>
   </Router>
   )

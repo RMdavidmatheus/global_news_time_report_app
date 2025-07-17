@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import GearIcon from "../components/logo/gearIcon";
 import HomeCardsComponent from "../components/home_cards/home_cards";
 import ContactFormComponent from "../components/contact_form/contact_form";
+import Footer from "../components/footer/footer";
 
 function Home() {
   return (
@@ -17,7 +18,7 @@ function Home() {
           <p className="font-light 2xl:text-3xl 3xl:text-4xl text-sm mt-2 text-white">
             Aquí podrás llevar un control de tus actividades
           </p>
-          <div className="mt-25 w-70 h-40">
+          <div className="mt-25 w-40 h-40 2xl:w-70 2xl:h-40 3xl:w-70 3xl:h-40">
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
@@ -26,7 +27,7 @@ function Home() {
             </motion.div>
           </div>
         </div>
-        {/* Div contact */}
+        {/* Div cards */}
         <div
           className="w-full flex flex-col items-center justify-center text-center h-[100vh] bg-[#C77700]"
           id="about"
@@ -43,7 +44,9 @@ function Home() {
                 Nuestro objetivo es mejorar la eficiencia de tu equipo
               </p>
             </div>
-            <HomeCardsComponent />
+            <div className="flex flex-col items-center justify-center text-center mt-10">
+              <HomeCardsComponent />
+            </div>
           </section>
         </div>
         {/* Div contact */}
@@ -64,6 +67,7 @@ function Home() {
           </section>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

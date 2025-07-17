@@ -18,45 +18,9 @@ export default function NavbarComponent() {
   //* State for the navbar (Mobile)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  //* Menu Items for the navbar (Mobile)
-  const menuItems = [
-    "Inicio",
-    "Acerca de nuestro proyecto",
-    "Actividades",
-    "Contacto",
-  ];
-
-  const routeMap: Record<string, string> = {
-    inicio: "/",
-    acerca: "#about",
-    actividades: "/activities",
-    contacto: "#contact",
-  };
-
   const navigate = useNavigate();
 
   const location = useLocation();
-
-  const handleNavigate = (route: string) => {
-    if (route === "#contact") {
-      setIsMenuOpen(false);
-
-      if (location.pathname !== "/") {
-        navigate("/");
-
-        setTimeout(() => {
-          const el = document.getElementById("contact");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 300);
-      } else {
-        const el = document.getElementById("contact");
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      setIsMenuOpen(false);
-      navigate(route);
-    }
-  };
 
   return (
     <Navbar
@@ -163,19 +127,50 @@ export default function NavbarComponent() {
 
       {/* Mobile Menu */}
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem isActive={location.pathname === "/"}>
+            <Link
+              className="w-full"
+              color={location.pathname === "/" ? "primary" : "foreground"}
+              href="#home"
+              size="lg"
+            >
+              Inicio
+            </Link>
+          </NavbarMenuItem>
+
+          <NavbarMenuItem>
+            <Link
+              className="w-full"
+              color="foreground"
+              href="#about"
+              size="lg"
+            >
+              Acerca de nuestro proyecto
+            </Link>
+          </NavbarMenuItem>
+
+          <NavbarMenuItem>
             <Link
               className="w-full"
               color="foreground"
               href=""
               size="lg"
-              onPress={() => handleNavigate(routeMap[item.toLowerCase()])}
+              onPress={() => navigate("/activities")}
             >
-              {item}
+              Actividades
             </Link>
           </NavbarMenuItem>
-        ))}
+
+          <NavbarMenuItem>
+            <Link
+              className="w-full"
+              color="foreground"
+              href="#contact"
+              size="lg"
+            >
+              Contacto
+            </Link>
+          </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );
