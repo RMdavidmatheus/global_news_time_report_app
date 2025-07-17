@@ -118,7 +118,7 @@ export default function NavbarComponent() {
             Acerca de nuestro proyecto
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={location.pathname === "/activities"} hidden>
+        <NavbarItem isActive={location.pathname === "/activities"}>
           <Link
             color={
               location.pathname === "/activities" ? "primary" : "foreground"
