@@ -50,13 +50,13 @@ function Home() {
           </section>
         </div>
         {/* Div contact */}
-        <div className="w-full flex flex-col items-center justify-center text-center h-[100vh] bg-white">
+        <div className="w-full flex flex-col items-center justify-center text-center h-[100vh]">
           <section
             id="contact"
             className="flex flex-col items-center justify-center text-center gap-20"
           >
             <div>
-              <h1 className="font-bold 2xl:text-7xl 3xl:text-7xl text-3xl text-foreground bg-gradient-to-r from-bg-white to-[#e4e4e4]">
+              <h1 className="font-bold 2xl:text-7xl 3xl:text-7xl text-3xl text-foreground bg-gradient-to-r from-bg-white to-[#c7c7c7]">
                 Contacto a soporte
               </h1>
               <p className="font-light 2xl:text-3xl 3xl:text-4xl text-sm mt-2 text-foreground">

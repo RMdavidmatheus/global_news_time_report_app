@@ -2,9 +2,13 @@ import { Button, Divider, User } from "@heroui/react";
 import { Folder, Checklist, Gear, LightBulb, Flag } from "react-ios-icons";
 import { HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import ModuleWork from "../components/module_work/module_work";
+import { useState } from "react";
 
 function Activities() {
   const navigate = useNavigate();
+  const [module, setModule] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -73,7 +77,7 @@ function Activities() {
           </div>
           <Divider className="my-1 w-[100%] border-1" />
           <div className="flex flex-row justify-center items-center h-20 gap-2">
-            <User description="Soporte Online" name="Leonardo Gomez Gomez" />
+            <User description="Soporte Online" name="Leonardo Gomez Gomez" avatarProps={{src: "/images/1.png"}} />
             <Button
               color="danger"
               variant="light"
@@ -86,7 +90,14 @@ function Activities() {
           </div>
         </div>
         {/* Div content */}
-        <div className="flex flex-col w-[100%] h-[100vh]"></div>
+        <div className="flex flex-col w-[100%] h-[100vh]">
+          <div className="flex flex-col m-5">
+            <h1 className="text-2xl font-bold">Módulo de tareas</h1>
+          </div>
+          <div className="flex flex-col m-5">
+            <ModuleWork />
+          </div>
+        </div>
       </div>
     </div>
   );
