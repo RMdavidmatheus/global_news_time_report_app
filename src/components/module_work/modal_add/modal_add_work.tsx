@@ -77,7 +77,7 @@ export default function ModalAddWork({
           )?.[0];
 
           const body_auditory: BodyAuditory = {
-            id_user: "93de28f5-c17a-4701-9205-6896563169c2",
+            id_user: sessionStorage.getItem("user_id") as string,
             id_task: task_id ?? "",
           };
           await ModalAddUtil.createAuditory(body_auditory);

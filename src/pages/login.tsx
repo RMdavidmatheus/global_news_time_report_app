@@ -1,20 +1,15 @@
-import { Card, CardBody, CardHeader } from "@heroui/react";
+import ParticlesBackground1 from "../components/background_particles/background_particles_1";
+import LoginForm from "../components/login_form/login_form";
 
 function Login() {
-    return (
-        <div className="flex flex-col items-center justify-center h-screen bg-foreground/5">
-            <div className="flex flex-col items-center justify-center">
-                <Card className="w-full shadow-2xl ">
-                    <CardHeader>
-                        <h1>Login</h1>
-                    </CardHeader>
-                    <CardBody>
-
-                    </CardBody>
-                </Card>
-            </div>
-        </div>
-    )
+  return (
+    <div className="relative h-screen w-full flex items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200">
+      <ParticlesBackground1 />
+      <div className="z-10">
+        <LoginForm />
+      </div>
+    </div>
+  );
 }
 
 export default Login;

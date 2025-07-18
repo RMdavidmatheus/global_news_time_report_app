@@ -21,7 +21,8 @@ export default function ModuleWork() {
     onClose: ModalOnClose,
   } = useDisclosure();
 
-  const constraintsRef = useRef(null);
+  const constraintsRefButton1 = useRef(null);
+  const constraintsRefButton2 = useRef(null);
 
   const [dataAuditory, setDataAuditory] = useState<AuditoryModel[]>([]);
   const [idAuditoryArray, setIdAuditoryArray] = useState<string[]>([]);
@@ -71,10 +72,10 @@ export default function ModuleWork() {
   }, [fetchAuditories]);
 
   return (
-    <div className="grid grid-cols-6 gap-8 items-center justify-center ml-40 mr-10 mt-10">
+    <div className="grid grid-cols-1 2xl:grid-cols-6 3xl:grid-cols-6 gap-8 items-center justify-center px-20 mt-10 2xl:ml-40 2xl:mr-10 3xl:ml-40 3xl:mr-10">
       {/* Card with data of task*/}
       {dataAuditory.map((item) => (
-        <div className="col-span-2" key={item.id}>
+        <div className="2xl:col-span-2 3xl:col-span-2" key={item.id}>
           <AnimatePresence>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -87,10 +88,10 @@ export default function ModuleWork() {
                 duration: 0.4,
               }}
             >
-              <Card className="w-[80%]">
+              <Card className="w-[125%] 2xl:w-[100%] 3xl:w-[100%]">
                 <CardHeader className="flex flex-col justify-center items-center">
                   <Checkbox
-                    className="absolute top-0 left-0 mt-2 ml-2"
+                    className="absolute top-0 left-0 mt-2 px-5 2xl:ml-2 3xl:ml-2"
                     isSelected={idAuditoryArray.includes(item.id)}
                     onValueChange={(isSelected) => {
                       setIdAuditoryArray((prev) =>
@@ -178,12 +179,12 @@ export default function ModuleWork() {
         </div>
       ))}
 
-      <div className="fixed bottom-6 right-6 z-50" ref={constraintsRef}>
+      <div className="fixed bottom-6 right-6 z-50" ref={constraintsRefButton1}>
         <motion.div
           drag
           dragSnapToOrigin
           dragElastic={0.3}
-          dragConstraints={constraintsRef}
+          dragConstraints={constraintsRefButton1}
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
@@ -199,12 +200,12 @@ export default function ModuleWork() {
           />
         </motion.div>
       </div>
-      <div className="fixed bottom-20 right-7.5 z-50" ref={constraintsRef}>
+      <div className="fixed bottom-20 right-7.5 z-50" ref={constraintsRefButton2}>
         <motion.div
           drag
           dragSnapToOrigin
           dragElastic={0.3}
-          dragConstraints={constraintsRef}
+          dragConstraints={constraintsRefButton2}
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
