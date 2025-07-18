@@ -15,7 +15,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <HeroUIProvider>
-      <ToastProvider placement="bottom-right" />
+      <ToastProvider placement="top-right" />
       <ContextProvider>
         <NextThemesProvider
           attribute="class"

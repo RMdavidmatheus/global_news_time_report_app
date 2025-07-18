@@ -1,6 +1,6 @@
 import { Button, Divider, User } from "@heroui/react";
-import { Folder, Checklist, Gear, LightBulb, Flag } from "react-ios-icons";
-import { HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
+import { Folder, Gear, LightBulb } from "react-ios-icons";
+import { HiOutlineArrowRightOnRectangle, HiCalendar, HiMiniTableCells  } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import ModuleWork from "../components/module_work/module_work";
 import { useState } from "react";
@@ -13,7 +13,7 @@ function Activities() {
   return (
     <div className="flex flex-col w-full h-full">
       <div className="flex flex-row w-full h-full">
-        <div className="flex flex-col w-[20%] h-[100vh] border-r-1 border-foreground/15">
+        <div className="flex flex-col w-[20%] h-[100vh] border-r-1 border-foreground/15 shadow-md">
           {/* Div title */}
           <div className="flex flex-col h-[17%] text-center justify-center items-center gap-1">
             <div className="flex flex-col items-center justify-center mt-3">
@@ -33,7 +33,7 @@ function Activities() {
               color="default"
               variant="flat"
               className="justify-start text-left w-full"
-              startContent={<Checklist />}
+              startContent={<HiMiniTableCells size={23} className="ml-1"/>}
             >
               Módulo de tareas
             </Button>
@@ -42,7 +42,7 @@ function Activities() {
               color="default"
               variant="flat"
               className="justify-start text-left w-full"
-              startContent={<Flag />}
+              startContent={<HiCalendar size={23} className="ml-1" />}
             >
               Módulo de horarios
             </Button>
@@ -77,7 +77,11 @@ function Activities() {
           </div>
           <Divider className="my-1 w-[100%] border-1" />
           <div className="flex flex-row justify-center items-center h-20 gap-2">
-            <User description="Soporte Online" name="Leonardo Gomez Gomez" avatarProps={{src: "/images/1.png"}} />
+            <User
+              description="Soporte Online"
+              name="Leonardo Gomez Gomez"
+              avatarProps={{ src: "/images/1.png" }}
+            />
             <Button
               color="danger"
               variant="light"
@@ -90,9 +94,9 @@ function Activities() {
           </div>
         </div>
         {/* Div content */}
-        <div className="flex flex-col w-[100%] h-[100vh]">
-          <div className="flex flex-col m-5">
-            <h1 className="text-2xl font-bold">Módulo de tareas</h1>
+        <div className="flex flex-col w-[100%] h-[100vh] bg-foreground/5">
+          <div className="w-full bg-white py-3 px-6 shadow-xs">
+            <h1 className="text-2xl font-bold text-black">Módulo de tareas</h1>
           </div>
           <div className="flex flex-col m-5">
             <ModuleWork />
