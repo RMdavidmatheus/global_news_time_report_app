@@ -93,7 +93,7 @@ export default function ModuleWork() {
   }, [fetchAuditories]);
 
   return (
-    <div className="grid grid-cols-1 2xl:grid-cols-6 3xl:grid-cols-6 gap-4 items-center justify-center mt-10 2xl:ml-40 2xl:mr-10 3xl:ml-40 3xl:mr-10">
+    <div className="grid grid-cols-1 2xl:grid-cols-6 3xl:grid-cols-6 gap-4 items-center justify-center mt-10 px-20">
       {/* Card with data of task*/}
       {dataAuditory.map((item) => (
         <div className="2xl:col-span-2 3xl:col-span-2" key={item.id}>
