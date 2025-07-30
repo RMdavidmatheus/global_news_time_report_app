@@ -39,7 +39,7 @@ export default function TaskExpiryWatcher({ isLogged }: { isLogged: boolean }) {
             const lastNotified = notifiedMap[dateStr];
             const elapsedMs = now.getTime() - (lastNotified || 0);
 
-            if (!lastNotified || elapsedMs > 10000) {
+            if (!lastNotified || elapsedMs > 20000) {
               addToast({
                 title: "Atención",
                 description: `Una tarea venció a las ${convertDateTo12HourFormat(finishDate)}`,
@@ -55,7 +55,7 @@ export default function TaskExpiryWatcher({ isLogged }: { isLogged: boolean }) {
       } catch (err) {
         console.error("Error manejando notificaciones:", err);
       }
-    }, 10000);
+    }, 20000);
     return () => clearInterval(interval);
   }, [isLogged]);
 

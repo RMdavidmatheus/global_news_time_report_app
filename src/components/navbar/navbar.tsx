@@ -50,7 +50,7 @@ export default function NavbarComponent() {
       }}
     >
       {/* Mobile Menu */}
-      <NavbarContent className="sm:hidden" justify="start">
+      <NavbarContent className="md:hidden sm:flex xl:hidden 2xl:hidden lg:hidden 3xl:hidden" justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
@@ -69,7 +69,7 @@ export default function NavbarComponent() {
           </Link>
         </div>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden md:flex gap-4" justify="center">
         <NavbarItem isActive={location.pathname === "/"}>
           <Link
             aria-current="page"
@@ -132,11 +132,15 @@ export default function NavbarComponent() {
           </Button>
         </NavbarItem>
 
-        <NavbarItem hidden={isAuthenticated ? false : true}>
+        <NavbarItem hidden={isAuthenticated ? false : true} className="items-center gap-2 sm:hidden md:hidden lg:flex xl:flex 2xl:flex 3xl:flex hidden">
           <Avatar
             color="default"
-            size="lg"
+            size="md"
           />
+          <div className="flex flex-col">
+            <p className="text-sm">{sessionStorage.getItem("full_name")}</p>
+            <p className="text-xs font-light text-gray-500">Soporte web</p>
+          </div>
         </NavbarItem>
         <NavbarItem hidden={isAuthenticated ? false : true}>
           <Button

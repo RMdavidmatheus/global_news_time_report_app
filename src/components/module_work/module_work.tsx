@@ -93,7 +93,7 @@ export default function ModuleWork() {
   }, [fetchAuditories]);
 
   return (
-    <div className="grid grid-cols-1 2xl:grid-cols-6 3xl:grid-cols-6 gap-8 items-center justify-center px-20 mt-10 2xl:ml-40 2xl:mr-10 3xl:ml-40 3xl:mr-10">
+    <div className="grid grid-cols-1 2xl:grid-cols-6 3xl:grid-cols-6 gap-4 items-center justify-center mt-10 2xl:ml-40 2xl:mr-10 3xl:ml-40 3xl:mr-10">
       {/* Card with data of task*/}
       {dataAuditory.map((item) => (
         <div className="2xl:col-span-2 3xl:col-span-2" key={item.id}>
@@ -109,7 +109,7 @@ export default function ModuleWork() {
                 duration: 0.4,
               }}
             >
-              <Card className="w-[125%] 2xl:w-[100%] 3xl:w-[100%]">
+              <Card className="sm:w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[125%] 3xl:w-[125%]">
                 <CardHeader className="flex flex-col justify-center items-center">
                   <Checkbox
                     className="absolute top-0 left-0 mt-2 px-5 2xl:ml-2 3xl:ml-2"

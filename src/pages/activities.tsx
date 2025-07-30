@@ -189,7 +189,7 @@ function Activities() {
           </div>
 
           {/* Contenido principal */}
-          <div className="flex-grow p-4 overflow-auto">
+          <div className="flex-col p-4 overflow-auto">
             {module === "works" && <ModuleWork />}
             {module === "schedules" && <ModuleSchedule />}
             {module === "" && <ModuleWork />}
