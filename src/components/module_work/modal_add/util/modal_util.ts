@@ -106,7 +106,7 @@ export class ModalAddUtil {
       const response = await axios.delete("http://localhost:3000/tasks/task", {
         data: ids,
       });
-  
+
       if (response.status === 200) {
         return response.data.message;
       } else {
@@ -115,6 +115,26 @@ export class ModalAddUtil {
     } catch (error) {
       console.error("Error al eliminar la tarea:", error);
       throw error;
+    }
+  }
+
+  static convertTo12HourFormat(timeString: string): string {
+    if (!timeString) return "";
+
+    const timeMatch = timeString.match(/(\d{1,2}):(\d{2}):(\d{2})/);
+    if (!timeMatch) return timeString;
+
+    const hour = parseInt(timeMatch[1]);
+    const minute = timeMatch[2];
+
+    if (hour === 0) {
+      return `12:${minute} AM`;
+    } else if (hour < 12) {
+      return `${hour}:${minute} AM`;
+    } else if (hour === 12) {
+      return `12:${minute} PM`;
+    } else {
+      return `${hour - 12}:${minute} PM`;
     }
   }
 }

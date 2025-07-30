@@ -12,6 +12,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LoginUtil } from "../components/login_form/util/login_form_util";
 import LogoBigComponent from "../components/logo/logo_big";
+import ModuleSchedule from "../components/module_schedule/module_schedule";
 
 function Activities() {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ function Activities() {
                   radius="sm"
                   variant="flat"
                   className="justify-start"
+                  onPress={() => setModule("schedules")}
                   startContent={<HiCalendar size={20} />}
                 >
                   Módulo de horarios
@@ -80,6 +82,7 @@ function Activities() {
                   radius="sm"
                   variant="flat"
                   className="justify-start"
+                  onPress={() => setModule("reports")}
                   startContent={<LightBulb />}
                 >
                   Reportes
@@ -89,6 +92,7 @@ function Activities() {
                   radius="sm"
                   variant="flat"
                   className="justify-start"
+                  onPress={() => setModule("profile")}
                   startContent={<Gear />}
                 >
                   Perfil
@@ -98,6 +102,7 @@ function Activities() {
                   radius="sm"
                   variant="flat"
                   className="justify-start"
+                  onPress={() => setModule("admin")}
                   startContent={<Gear />}
                 >
                   Módulo para administradores
@@ -168,7 +173,15 @@ function Activities() {
                   >
                     {module === "works"
                       ? "Módulo de tareas"
-                      : "Módulo de horarios"}
+                      : module === "reports"
+                      ? "Reportes"
+                      : module === "profile"
+                      ? "Perfil"
+                      : module === "admin"
+                      ? "Módulo para administradores"
+                      : module === "schedules"
+                      ? "Módulo de horarios"
+                      : "Módulo de tareas"}
                   </motion.h1>
                 </div>
               </AnimatePresence>
@@ -177,7 +190,9 @@ function Activities() {
 
           {/* Contenido principal */}
           <div className="flex-grow p-4 overflow-auto">
-            <ModuleWork />
+            {module === "works" && <ModuleWork />}
+            {module === "schedules" && <ModuleSchedule />}
+            {module === "" && <ModuleWork />}
           </div>
         </div>
       </div>

@@ -33,14 +33,21 @@ export default function ModuleWork() {
     console.log("idTaskArray", idTaskArray);
   }, [idAuditoryArray, idTaskArray]);
 
-  const onHandlePatchAuditory = async (idArray: string[] | null, idTask: string[] | null) => {
+  const onHandlePatchAuditory = async (
+    idArray: string[] | null,
+    idTask: string[] | null
+  ) => {
     console.log("idTask", idTask);
-    const arrayForUpdate = idArray && idArray.length > 0 ? idArray : idAuditoryArray;
+    const arrayForUpdate =
+      idArray && idArray.length > 0 ? idArray : idAuditoryArray;
     const arrayForDelete = idTask && idTask.length > 0 ? idTask : idTaskArray;
 
     if (arrayForUpdate.length > 0 || arrayForDelete.length > 0) {
       await ModalAddUtil.updateAuditory(arrayForUpdate);
       await ModalAddUtil.deleteTask(arrayForDelete);
+      const finishDates: string[] = sessionStorage.getItem("finishDates") ? JSON.parse(sessionStorage.getItem("finishDates") || "[]") : [];
+      const finishDatesFiltered = finishDates.filter(date => !arrayForUpdate.includes(date));
+      sessionStorage.setItem("finishDates", JSON.stringify(finishDatesFiltered));
       setIdAuditoryArray([]);
       setIdTaskArray([]);
       addToast({
@@ -62,6 +69,20 @@ export default function ModuleWork() {
     const response = await ModalAddUtil.getAuditories();
     if (JSON.stringify(response) !== JSON.stringify(dataAuditory)) {
       setDataAuditory(response as AuditoryModel[]);
+      const currentUsername = sessionStorage.getItem("username");
+      const isAuth = sessionStorage.getItem("auth") === "true";
+  
+      if (isAuth && currentUsername) {
+        const userAuditories = response.filter(
+          (item) => item.user.user_name === currentUsername && item.status === true
+        );
+  
+        const finishDates = userAuditories.map(
+          (item) => item.task.details.task_final_time
+        );
+  
+        sessionStorage.setItem("finishDates", JSON.stringify(finishDates));
+      }
     }
   }, [dataAuditory]);
 
@@ -141,13 +162,17 @@ export default function ModuleWork() {
                       <div className="flex flex-row gap-1">
                         <p className="text-sm font-bold">Hora inicio:</p>
                         <p className="text-sm font-thin">
-                          {item.task.details.task_initial_time}
+                          {ModalAddUtil.convertTo12HourFormat(
+                            item.task.details.task_initial_time
+                          )}
                         </p>
                       </div>
                       <div className="flex flex-row gap-1">
                         <p className="text-sm font-bold">Hora fin:</p>
                         <p className="text-sm font-thin">
-                          {item.task.details.task_final_time}
+                          {ModalAddUtil.convertTo12HourFormat(
+                            item.task.details.task_final_time
+                          )}
                         </p>
                       </div>
                       <div className="flex flex-row gap-1">
@@ -200,7 +225,10 @@ export default function ModuleWork() {
           />
         </motion.div>
       </div>
-      <div className="fixed bottom-20 right-7.5 z-50" ref={constraintsRefButton2}>
+      <div
+        className="fixed bottom-20 right-7.5 z-50"
+        ref={constraintsRefButton2}
+      >
         <motion.div
           drag
           dragSnapToOrigin

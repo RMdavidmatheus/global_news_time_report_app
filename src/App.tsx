@@ -5,10 +5,12 @@ import Register from "./pages/register";
 import AppLayout from "./layouts/AppLayout";
 import Activities from "./pages/activities";
 import { ProtectedRoute } from "./protected_route/protected_route";
+import TaskExpiryWatcher from "./components/expiry_toast/task_expiry_watcher";
 
 function App() {
   return (
     <Router>
+      <TaskExpiryWatcher isLogged={sessionStorage.getItem("auth") === "true"} />
       <Routes>
         {/*Navbar Layout */}
         <Route element={<AppLayout />}>
