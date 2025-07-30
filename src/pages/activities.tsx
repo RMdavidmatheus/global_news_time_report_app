@@ -1,4 +1,4 @@
-import { Button, User, addToast } from "@heroui/react";
+import { Button, Link, User, addToast } from "@heroui/react";
 import { Gear, LightBulb } from "react-ios-icons";
 import {
   HiOutlineArrowRightOnRectangle,
@@ -47,7 +47,20 @@ function Activities() {
               {/* Título y logo */}
               <div className="flex flex-col text-center items-center gap-1 mt-2">
                 <div className="flex flex-col items-center justify-center ml-6">
-                  <LogoBigComponent />
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  >
+                    <Button
+                      onPress={() => navigate("/")}
+                      as={Link}
+                      variant="light"
+                      isIconOnly
+                      className="w-full"
+                    >
+                      <LogoBigComponent />
+                    </Button>
+                  </motion.div>
                 </div>
                 <h1 className="text-xl font-bold sm:text-3xl">Bienvenido</h1>
                 <p className="text-xs font-thin px-2 text-center">
@@ -132,8 +145,7 @@ function Activities() {
                       });
                       sessionStorage.clear();
                       navigate("/");
-                    }
-                    else {
+                    } else {
                       addToast({
                         title: "Error",
                         description: "Error al cerrar sesión",
