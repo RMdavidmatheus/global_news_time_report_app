@@ -14,7 +14,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [setTheme]);
 
   return (
-    <HeroUIProvider>
+    <HeroUIProvider locale="es-ES">
       <ToastProvider placement="top-right" />
       <ContextProvider>
         <NextThemesProvider

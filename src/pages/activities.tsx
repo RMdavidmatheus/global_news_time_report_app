@@ -13,6 +13,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { LoginUtil } from "../components/login_form/util/login_form_util";
 import LogoBigComponent from "../components/logo/logo_big";
 import ModuleSchedule from "../components/module_schedule/module_schedule";
+import ModuleReports from "../components/module_reports/module_reports";
+import ModuleProfile from "../components/module_profile/module_profile";
+import ModuleAdmin from "../components/module_admin/module_admin";
 
 function Activities() {
   const navigate = useNavigate();
@@ -204,6 +207,9 @@ function Activities() {
           <div className="flex-col p-4 overflow-auto">
             {module === "works" && <ModuleWork />}
             {module === "schedules" && <ModuleSchedule />}
+            {module === "reports" && <ModuleReports />}
+            {module === "profile" && <ModuleProfile />}
+            {module === "admin" && <ModuleAdmin />}
             {module === "" && <ModuleWork />}
           </div>
         </div>
